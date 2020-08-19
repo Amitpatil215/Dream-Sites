@@ -6,6 +6,10 @@ import 'package:path_provider/path_provider.dart'
     as path_provider_functionality; // finds path where we wanna store image
 
 class ImageInput extends StatefulWidget {
+  final Function onSelectImage;
+
+  const ImageInput({Key key, this.onSelectImage}) : super(key: key);
+
   @override
   _ImageInputState createState() => _ImageInputState();
 }
@@ -28,6 +32,8 @@ class _ImageInputState extends State<ImageInput> {
     final fileName = path_functionality.basename(_storedImage.path);
     // copying image to storage
     final savedImage = await _storedImage.copy("${appDir.path}/${fileName}");
+    //calling method in add_place_screen for passing image there
+    widget.onSelectImage(savedImage);
   }
 
   @override
