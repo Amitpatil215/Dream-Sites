@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import '../models/place.dart';
 import '../helpers/db_helper.dart';
@@ -24,10 +25,23 @@ class GreatPlaces with ChangeNotifier {
     notifyListeners();
 
     //storing in database
-    DBHelper.insert('places', {
+    DBHelper.insert('user_places', {
       'id': newPlace.id,
       'title': newPlace.title,
       'image': newPlace.image.path,
     });
+  }
+
+  Future<void> fetchAndSetPlaces() async {
+    final dataList = await DBHelper.getData('user_places');
+    _items = dataList.map((element) {
+      return Place(
+        id: element['id'],
+        title: element['title'],
+        location: null,
+        image: File(element['image']),
+      );
+    }).toList();
+    notifyListeners();
   }
 }
