@@ -28,7 +28,7 @@ class _LocationInputState extends State<LocationInput> {
 
   Future<void> _selectOnMap() async {
     //final LatLng selectedLocation = await Navigator.of(context).push(
-    final selectedLocation = await Navigator.of(context).push<LatLng>(
+    var selectedLocation = await Navigator.of(context).push<LatLng>(
       MaterialPageRoute(
         fullscreenDialog: true,
         builder: (context) => MapScreen(
@@ -39,8 +39,19 @@ class _LocationInputState extends State<LocationInput> {
     if (selectedLocation == null) {
       return;
     } else {
-      print(selectedLocation.latitude);
-      print(selectedLocation.longitude);
+      //setting to preview window
+      setState(
+        () {
+          _previewImageUrl = LocationHelper.generateLocationPreviewImage(
+            latitude: selectedLocation.latitude,
+            longitude: selectedLocation.longitude,
+          );
+        },
+      );
+      // setting back to null cause if we first fetched current location
+      //& then we wanna manually select then for preview purpose we must
+      // set it to null
+      selectedLocation = null;
     }
   }
 
@@ -76,7 +87,9 @@ class _LocationInputState extends State<LocationInput> {
               icon: Icon(Icons.location_on),
               label: Text("Current Location"),
               textColor: Theme.of(context).primaryColor,
-              onPressed: _getCurrentUserLocation,
+              onPressed: () {
+                _getCurrentUserLocation();
+              },
             ),
             FlatButton.icon(
               icon: Icon(Icons.map),

@@ -10,7 +10,7 @@
         android:label="dream_sites"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyDbXdgUc_xMmel9Uhp1DWXkKAeMUMckRCk"/>
+               android:value="Your Api Key"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
