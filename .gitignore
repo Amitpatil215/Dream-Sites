@@ -11,7 +11,7 @@
 
 #api keys
 lib/api_key/location_api_key.dart
-
+android/app/src/main/AndroidManifest.xml
 
 # IntelliJ related
 *.iml
