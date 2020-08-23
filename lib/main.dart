@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_config/flutter_config.dart';
 import './providers/great_places.dart';
 import './screens/place_list_screen.dart';
 import './screens/add_place_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // loading all the environmet variables like api keys
+  await FlutterConfig.loadEnvVariables();
   runApp(MyApp());
 }
 

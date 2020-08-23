@@ -9,8 +9,8 @@
 .history
 .svn/
 
-#api keys
-lib/api_key/location_api_key.dart
+#Flutter config env file
+.env
 
 
 # IntelliJ related

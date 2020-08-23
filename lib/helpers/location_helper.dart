@@ -1,6 +1,7 @@
-import '../api_key/location_api_key.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-final googleApiKey = locationApiKey();
+// getting maps api key from environment variables
+final googleApiKey = FlutterConfig.get('google_map_api');
 
 class LocationHelper {
   static String generateLocationPreviewImage(
