@@ -15,7 +15,7 @@ class DBHelper {
         return db.execute(
           // here we can exicute sql querries
           // we creating new table in database
-          'CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT)',
+          'CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT,loc_lat Real,loc_lng Real,address TEXT)',
         );
       },
       //used for overriding the existing data base
