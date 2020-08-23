@@ -4,6 +4,7 @@ import 'package:flutter_config/flutter_config.dart';
 import './providers/great_places.dart';
 import './screens/place_list_screen.dart';
 import './screens/add_place_screen.dart';
+import './screens/place_detail_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,10 @@ class MyApp extends StatelessWidget {
         routes: {
           AddPlaceScreen.routName: (ctx) {
             return AddPlaceScreen();
-          }
+          },
+          PlaceDetailScreen.routName: (ctx) {
+            return PlaceDetailScreen();
+          },
         },
       ),
     );
